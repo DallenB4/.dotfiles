@@ -1,0 +1,53 @@
+.background {
+	border-radius: 8px;
+}
+
+.divider {
+	color: @dialog_bg_color;
+}
+
+.box {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.userhost {
+	font-family: monospace;
+	min-height: 30px;
+	font-weight: bold;
+	color: @green_1;
+}
+
+.window-title {
+	font-family: monospace;
+	letter-spacing: -1px;
+}
+
+.slider {
+	min-width: 10rem;
+}
+
+.slider slider {
+	all: unset;
+}
+
+.microphone-bar highlight {
+	background-color: @blue_1;
+}
+
+.slider trough {
+	min-height: 8px;
+}
+
+.speaker-bar highlight {
+	background-color: @orange_1;
+}
+
+.bluetooth-status {
+	font-size: 1.25em;
+}
+
+.clock {
+	font-weight: bold;
+	font-size: 1.25rem;
+}
