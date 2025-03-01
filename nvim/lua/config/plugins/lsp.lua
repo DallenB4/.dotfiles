@@ -25,9 +25,77 @@ return {
 		require("mason-lspconfig").setup_handlers {
 			function(server_name)
 				local capabilities = require("blink.cmp").get_lsp_capabilities()
-				require("lspconfig")[server_name].setup {
-					capabilities = capabilities
-				}
+
+				if server_name == "ts_ls" then
+					local mason_registry = require('mason-registry')
+					local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+							'/node_modules/@vue/language-server'
+					require("lspconfig").ts_ls.setup {
+						init_options = {
+							plugins = {
+								{
+									name = "@vue/typescript-plugin",
+									location = vue_language_server_path,
+									languages = { "vue" },
+								}
+							},
+						},
+						capabilities = capabilities,
+						filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+						settings = {
+							typescript = {
+								tsserver = {
+									useSyntaxServer = false,
+								},
+								inlayHints = {
+									includeInlayParameterNameHints = 'all',
+									includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+									includeInlayFunctionParameterTypeHints = true,
+									includeInlayVariableTypeHints = true,
+									includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+									includeInlayPropertyDeclarationTypeHints = true,
+									includeInlayFunctionLikeReturnTypeHints = true,
+									includeInlayEnumMemberValueHints = true,
+								},
+							},
+						},
+					}
+				elseif server_name == "volar" then
+					require("lspconfig").volar.setup {
+						capabilities = capabilities,
+						init_options = {
+							vue = {
+								hybridMode = false,
+							},
+						},
+						settings = {
+							typescript = {
+								inlayHints = {
+									enumMemberValues = {
+										enabled = true,
+									},
+									functionLikeReturnTypes = {
+										enabled = true,
+									},
+									propertyDeclarationTypes = {
+										enabled = true,
+									},
+									parameterTypes = {
+										enabled = true,
+										suppressWhenArgumentMatchesName = true,
+									},
+									variableTypes = {
+										enabled = true,
+									},
+								},
+							},
+						}
+					}
+				else
+					require("lspconfig")[server_name].setup {
+						capabilities = capabilities
+					}
+				end
 			end,
 		}
 
