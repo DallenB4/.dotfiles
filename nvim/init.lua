@@ -1,12 +1,12 @@
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.clipboard = "unnamedplus"
-vim.opt.mouse = ''
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.opt.scrolloff = 10
 vim.opt.undofile = true
 vim.opt.termguicolors = true
+-- vim.opt.expandtab = true
 
 vim.diagnostic.config {
 	float = true,
