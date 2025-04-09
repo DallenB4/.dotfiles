@@ -36,6 +36,17 @@ vim.keymap.set('', "<Esc>", "<cmd>nohlsearch<CR>")
 -- Exit visual mode with esc
 vim.keymap.set('v', "<Esc>", "<C-c>")
 
+
+vim.api.nvim_create_autocmd('LspAttach', {
+	callback = function(args)
+		vim.keymap.set('', "gd", vim.lsp.buf.definition, {
+			noremap = true,
+			silent = true,
+			buffer = args.buf
+		})
+	end
+})
+
 vim.api.nvim_create_autocmd('TextYankPost', {
 	desc = 'Highlight when yanking (copying) text',
 	group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
