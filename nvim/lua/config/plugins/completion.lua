@@ -37,6 +37,16 @@ return {
 
 			},
 			cmdline = {
+				completion = {
+					menu = {
+						auto_show = true
+					},
+					list = {
+						selection = {
+							preselect = false
+						}
+					},
+				},
 				keymap = {
 					['<C-space>'] = { 'show', 'show_documentation' },
 					['<C-h>'] = { 'hide', 'fallback' },
@@ -57,10 +67,9 @@ return {
 			},
 
 			completion = {
-				-- { preselect, manual, auto_insert }
 				list = {
 					selection = {
-						preselect = function(ctx) return ctx.mode ~= "cmdline" end,
+						preselect = true,
 						auto_insert = true,
 					}
 				},
