@@ -1,4 +1,4 @@
-return {
+return { {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"williamboman/mason.nvim",
@@ -30,7 +30,9 @@ return {
 					local mason_registry = require('mason-registry')
 					local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
 							'/node_modules/@vue/language-server'
+					-- Vue support
 					require("lspconfig").ts_ls.setup {
+						capabilities = capabilities,
 						init_options = {
 							plugins = {
 								{
@@ -40,56 +42,7 @@ return {
 								}
 							},
 						},
-						capabilities = capabilities,
 						filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-						settings = {
-							typescript = {
-								tsserver = {
-									useSyntaxServer = false,
-								},
-								inlayHints = {
-									includeInlayParameterNameHints = 'all',
-									includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-									includeInlayFunctionParameterTypeHints = true,
-									includeInlayVariableTypeHints = true,
-									includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-									includeInlayPropertyDeclarationTypeHints = true,
-									includeInlayFunctionLikeReturnTypeHints = true,
-									includeInlayEnumMemberValueHints = true,
-								},
-							},
-						},
-					}
-				elseif server_name == "volar" then
-					require("lspconfig").volar.setup {
-						capabilities = capabilities,
-						init_options = {
-							vue = {
-								hybridMode = false,
-							},
-						},
-						settings = {
-							typescript = {
-								inlayHints = {
-									enumMemberValues = {
-										enabled = true,
-									},
-									functionLikeReturnTypes = {
-										enabled = true,
-									},
-									propertyDeclarationTypes = {
-										enabled = true,
-									},
-									parameterTypes = {
-										enabled = true,
-										suppressWhenArgumentMatchesName = true,
-									},
-									variableTypes = {
-										enabled = true,
-									},
-								},
-							},
-						}
 					}
 				else
 					require("lspconfig")[server_name].setup {
@@ -115,4 +68,8 @@ return {
 			end
 		})
 	end
-}
+}, {
+	-- Nuxt goto definition fix
+	"rushjs1/nuxt-goto.nvim",
+	ft = "vue",
+} }
