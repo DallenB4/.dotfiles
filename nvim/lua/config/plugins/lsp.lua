@@ -38,11 +38,19 @@ return { {
 								{
 									name = "@vue/typescript-plugin",
 									location = vue_language_server_path,
-									languages = { "vue" },
+									languages = { "vue", "typescript", "css" },
 								}
 							},
 						},
-						filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+					}
+				elseif server_name == "volar" then
+					require("lspconfig").volar.setup {
+						capabilities = capabilities,
+						init_options = {
+							vue = {
+								hybridMode = false,
+							},
+						},
 					}
 				else
 					require("lspconfig")[server_name].setup {
@@ -68,6 +76,7 @@ return { {
 			end
 		})
 	end
+
 }, {
 	-- Nuxt goto definition fix
 	"rushjs1/nuxt-goto.nvim",

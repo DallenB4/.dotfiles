@@ -81,9 +81,6 @@ return {
 				trigger = {
 					show_on_x_blocked_trigger_characters = function()
 						local blocked = { "'", '"', '(' }
-						if vim.bo.filetype == 'vue' then
-							table.insert(blocked, '{')
-						end
 						return blocked
 					end,
 				},
