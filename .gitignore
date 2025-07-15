@@ -1,2 +1,4 @@
 tmux/plugins
 nix/nixos-switch.log
+.DS_Store
+.env

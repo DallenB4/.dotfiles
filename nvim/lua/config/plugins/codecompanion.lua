@@ -1,0 +1,31 @@
+return {}
+-- return {
+-- 	"olimorris/codecompanion.nvim",
+-- 	opts = {},
+-- 	config = function()
+-- 		require("codecompanion").setup({
+-- 			strategies = {
+-- 				chat = {
+-- 					adapter = "gemini",
+-- 				},
+-- 				inline = {
+-- 					adapter = "gemini",
+-- 				},
+-- 			},
+-- 			adapters = {
+-- 				gemini = function()
+-- 					local file = string.format("%s/lua/config/plugins/.env", vim.fn.stdpath("config"));
+-- 					return require("codecompanion.adapters").extend("gemini", {
+-- 						env = {
+-- 							api_key = string.format("cmd:export $(cat %s | xargs) && echo $GEMINI_API_KEY", file)
+-- 						}
+-- 					})
+-- 				end
+-- 			},
+-- 		})
+-- 	end,
+-- 	dependencies = {
+-- 		"nvim-lua/plenary.nvim",
+-- 		"nvim-treesitter/nvim-treesitter",
+-- 	},
+-- }
