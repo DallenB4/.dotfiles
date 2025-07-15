@@ -60,7 +60,7 @@ return {
 									{
 										name = "@vue/typescript-plugin",
 										location = vue_language_server_path,
-										languages = { "vue", "typescript", "css" },
+										languages = { "vue", "typescript", "css", "javascript" },
 									}
 								},
 							},
@@ -74,6 +74,18 @@ return {
 								},
 							},
 						}
+						-- elseif server_name == "arduino_language_server" then
+						-- 	print("arduino")
+						-- 	require("lspconfig").arduino_language_server.setup {
+						-- 		capabilities = capabilities,
+						-- 		cmd = {
+						-- 			"arduino-language-server",
+						-- 			"-cli-config",
+						-- 			"/Users/dallen/Library/Arduino15/arduino-cli.yaml",
+						-- 			"-fqbn",
+						-- 			"arduino:avr:uno"
+						-- 		}
+						-- 	}
 					else
 						require("lspconfig")[server_name].setup {
 							capabilities = capabilities

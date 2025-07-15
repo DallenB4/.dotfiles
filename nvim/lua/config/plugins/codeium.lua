@@ -11,7 +11,10 @@ return {
 	"Exafunction/codeium.vim",
 	event = "BufEnter",
 	config = function()
-		vim.g.codeium_enabled = 0
+		-- If filetype is md, disable the default mappings
+		if vim.bo.filetype == "markdown" then
+			vim.g.codeium_enabled = 0
+		end
 		vim.g.codeium_no_map_tab = 0
 		vim.g.codeium_disable_bindings = 0
 

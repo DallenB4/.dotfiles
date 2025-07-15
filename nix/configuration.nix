@@ -13,7 +13,6 @@
 	];
 
 	system.defaults = {
-		NSGlobalDomain.AppleInterfaceStyle = null;
-		NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
+		NSGlobalDomain.AppleInterfaceStyle = "Dark";
 	};
 }
