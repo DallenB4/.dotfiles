@@ -7,12 +7,19 @@
 -- 		vim.keymap.set("i", "<M-CR>", neocodeium.accept)
 -- 	end,
 -- }
+local function endswith(needle, haystack)
+	local suffix = string.sub(needle, -(#haystack))
+	return suffix == haystack
+end
 return {
 	"Exafunction/codeium.vim",
 	event = "BufEnter",
 	config = function()
 		-- If filetype is md, disable the default mappings
 		if vim.bo.filetype == "markdown" then
+			vim.g.codeium_enabled = 0
+		end
+		if endswith(vim.api.nvim_buf_get_name(0), ".env") then
 			vim.g.codeium_enabled = 0
 		end
 		vim.g.codeium_no_map_tab = 0

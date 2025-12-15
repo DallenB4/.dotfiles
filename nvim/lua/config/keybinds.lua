@@ -9,7 +9,11 @@ vim.keymap.set('', "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set('', "<M-k>", "<cmd>cprev<CR>")
 
 -- LSP bindings
-vim.keymap.set('', "<leader><leader>", vim.lsp.buf.hover)
+vim.keymap.set('', "<leader><leader>", function()
+	vim.lsp.buf.hover({
+		border = "rounded"
+	})
+end)
 vim.keymap.set('', "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set('', "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set('', "<leader>n", vim.diagnostic.goto_next)
