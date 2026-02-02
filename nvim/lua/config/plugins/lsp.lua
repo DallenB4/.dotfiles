@@ -1,40 +1,42 @@
 return {
 	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			{
-				"folke/lazydev.nvim",
-				ft = "lua", -- only load on lua files
-				opts = {
-					library = {
-						-- See the configuration section for more details
-						-- Load luvit types when the `vim.uv` word is found
-						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-					},
-				},
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 			},
 		},
+	},
+	{ "mason-org/mason.nvim", opts = {} },
+	{
+		"neovim/nvim-lspconfig",
+		lazy = false,
+		dependencies = {
+			{ "mason-org/mason-lspconfig.nvim", opts = {} }
+		},
+		opts = {},
 		config = function()
+			vim.diagnostic.config({
+				float = { border = "rounded" },
+			})
+
 			-- Set documentation border to be rounded
 			local handlers = {
 				['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
 				['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 			}
 
-			vim.diagnostic.config({
-				float = { border = "rounded" },
-			})
-
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			require("mason").setup()
 			require("mason-lspconfig").setup {
-				automatic_enable = {
-					exclude = { "ts_ls" }
-				},
 				automatic_installation = false,
 				automatic_setup = false,
+				-- automatic_enable = {
+				-- 	exclude = { 'ts_ls' }
+				-- },
 				capabilities = capabilities,
 				handlers = nil,
 				ensure_installed = {
@@ -42,23 +44,22 @@ return {
 				},
 			}
 
-			local lspconfig = require("lspconfig")
-
-			lspconfig.vue_ls.setup {
-				capabilities = capabilities,
-				handlers = handlers
-			}
-
-			lspconfig.eslint.setup {
+			vim.lsp.config('eslint', {
 				capabilities = capabilities,
 				handlers = handlers,
 				filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' }
-			}
+			})
+
+			vim.lsp.config('vue_ls', {
+				capabilities = capabilities,
+				handlers = handlers,
+			})
 
 			local vue_language_server_path = vim.fn.expand '$MASON/packages' ..
 					'/vue-language-server' .. '/node_modules/@vue/language-server'
+
 			-- Vue support
-			lspconfig.ts_ls.setup {
+			vim.lsp.config('ts_ls', {
 				capabilities = capabilities,
 				handlers = handlers,
 				init_options = {
@@ -72,9 +73,9 @@ return {
 					},
 				},
 				filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
-			}
+			})
 
-			lspconfig.rust_analyzer.setup {
+			vim.lsp.config('rust_analyzer', {
 				settings = {
 					['rust-analyzer'] = {
 						check = {
@@ -85,7 +86,7 @@ return {
 						}
 					}
 				}
-			}
+			})
 
 			vim.api.nvim_create_autocmd('LspAttach', {
 				callback = function(args)
@@ -97,7 +98,6 @@ return {
 							buffer = args.buf,
 							callback = function()
 								vim.lsp.buf.format({
-									name = 'eslint',
 									bufnr = args.buf,
 									id = client.id,
 									filter = function()
@@ -110,9 +110,5 @@ return {
 				end
 			})
 		end
-
-	}, {
-	-- Nuxt goto definition fix
-	"rushjs1/nuxt-goto.nvim",
-	ft = { "vue", "ts" },
-} }
+	},
+}
