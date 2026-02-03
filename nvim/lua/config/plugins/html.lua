@@ -6,7 +6,7 @@ return {
 	{
 		"brianhuster/live-preview.nvim",
 		opts = {
-			browser = nil,
+			browser = '/dev/null',
 			address = '0.0.0.0',
 			port = 3000
 		}

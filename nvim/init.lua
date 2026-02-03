@@ -8,6 +8,10 @@ vim.opt.undofile = true
 vim.opt.termguicolors = true
 -- vim.opt.expandtab = true
 
+-- Neovide
+vim.g.neovide_window_blurred = true
+vim.g.neovide_opacity = 0.8
+
 vim.diagnostic.config {
 	float = true,
 }
