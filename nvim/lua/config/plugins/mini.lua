@@ -48,7 +48,7 @@ return {
     },
     {
         "nvim-mini/mini.map",
-        config = function ()
+        config = function()
             local MiniMap = require("mini.map")
             vim.keymap.set('n', "<leader>mm", MiniMap.toggle, { silent = true })
             MiniMap.setup({
@@ -85,11 +85,11 @@ return {
     },
     {
         "nvim-mini/mini.extra",
-        config = function ()
+        config = function()
             local MiniExtra = require("mini.extra")
             MiniExtra.setup()
             vim.keymap.set('n', "<leader>cs", function()
-                local colorscheme = MiniExtra.pickers.colorschemes()
+                MiniExtra.pickers.colorschemes()
             end, { silent = true })
         end
     },
@@ -99,11 +99,21 @@ return {
             local MiniAnimate = require("mini.animate")
             MiniAnimate.setup({
                 cursor = {
-                    enable = true,
-                    path = vim.g.neovide and MiniAnimate.gen_path.spiral() or MiniAnimate.gen_path.angle()
+                    enable = not vim.g.neovide,
+                    path = MiniAnimate.gen_path.angle()
                 },
-
+                scroll = { enable = not vim.g.neovide },
+                resize = { enable = not vim.g.neovide },
+                open   = { enable = not vim.g.neovide },
+                close  = { enable = not vim.g.neovide }
             })
+        end
+    },
+    {
+        "nvim-mini/mini.notify",
+        config = function ()
+            local MiniNotify = require("mini.notify")
+            MiniNotify.setup()
         end
     }
 }

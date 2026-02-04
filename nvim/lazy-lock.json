@@ -18,6 +18,7 @@
   "mini.map": { "branch": "main", "commit": "32a3a5d9a7c074dbb0a4a1d5943d09cb8edbab3f" },
   "mini.misc": { "branch": "main", "commit": "b647b64321c34d4868d158282bb89e49f0d6838b" },
   "mini.move": { "branch": "main", "commit": "4d214202d71e0a4066b6288176bbe88f268f9777" },
+  "mini.notify": { "branch": "main", "commit": "29ec27f60bf4b63e447c851d9061c434d80795a6" },
   "mini.pairs": { "branch": "main", "commit": "4089aa6ea6423e02e1a8326a7a7a00159f6f5e04" },
   "mini.pick": { "branch": "main", "commit": "7c0a674f620ddc701903b887b2dade836b23ea79" },
   "mini.snippets": { "branch": "main", "commit": "b4065ca6b33e4df2897672d3bb760cfc93f4390a" },

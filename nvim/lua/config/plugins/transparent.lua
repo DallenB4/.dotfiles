@@ -5,7 +5,8 @@ return {
             "MiniPickNormal",
             "MiniPickBorder",
             "MiniPickPrompt",
-            "MiniMapNormal"
+            "MiniMapNormal",
+            "MiniNotifyNormal"
         }
         if vim.g.neovide then
             require("transparent").setup({
