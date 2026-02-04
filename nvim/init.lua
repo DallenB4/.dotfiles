@@ -13,6 +13,7 @@ vim.o.termguicolors = true
 vim.o.expandtab = true
 vim.o.winborder = "single"
 vim.o.pumborder = "single"
+vim.g.remote = os.getenv("SSH_CONNECTION") ~= nil
 -- vim.opt.expandtab = true
 
 -- Neovide

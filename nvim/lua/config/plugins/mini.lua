@@ -74,18 +74,22 @@ return {
       -- mini.extra
       local MiniExtra = require("mini.extra")
       MiniExtra.setup()
-      vim.keymap.set('n', "<leader>cs", function()
-          MiniExtra.pickers.colorschemes()
-      end, { silent = true })
+            vim.keymap.set('n', "<leader>cs", function()
+                MiniExtra.pickers.colorschemes()
+            end, { silent = true })
 
-      -- mini.animate
-      local MiniAnimate = require("mini.animate")
-      MiniAnimate.setup({
-          cursor = {
-              enable = not vim.g.neovide,
-              path = MiniAnimate.gen_path.angle()
-          },
-          scroll = { enable = not vim.g.neovide },
+            -- mini.animate
+            local MiniAnimate = require("mini.animate")
+            MiniAnimate.setup({
+                cursor = {
+                    enable = not vim.g.neovide
+                        and not vim.g.remote,
+                    path = MiniAnimate.gen_path.angle()
+                },
+                scroll = {
+                    enable = not vim.g.neovide
+                        and not vim.g.remote
+                },
           resize = { enable = not vim.g.neovide },
           open   = { enable = not vim.g.neovide },
           close  = { enable = not vim.g.neovide }
