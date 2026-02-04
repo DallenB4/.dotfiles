@@ -47,12 +47,22 @@ return {
             vim.lsp.config('eslint', {
                 -- capabilities = capabilities,
                 handlers = handlers,
-                filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' }
+                filetypes = { 'javascript', 'javascriptreact', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' }
             })
 
             vim.lsp.config('vue_ls', {
                 -- capabilities = capabilities,
                 handlers = handlers,
+            })
+
+            vim.lsp.config('lua_ls', {
+                settings = {
+                    Lua = {
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file('', true)
+                        }
+                    }
+                }
             })
 
             local vue_language_server_path = vim.fn.expand '$MASON/packages' ..
