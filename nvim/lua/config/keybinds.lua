@@ -5,8 +5,8 @@ vim.keymap.set('n', "<leader>a", "G$vgg0")
 vim.keymap.set('t', "<Esc>", "<C-\\><C-n>")
 
 -- Quickfix
-vim.keymap.set('', "<M-j>", "<cmd>cnext<CR>")
-vim.keymap.set('', "<M-k>", "<cmd>cprev<CR>")
+-- vim.keymap.set('', "<M-j>", "<cmd>cnext<CR>")
+-- vim.keymap.set('', "<M-k>", "<cmd>cprev<CR>")
 
 vim.keymap.set('n', "<leader>o", "<CMD>update<CR> <CMD>source<CR>")
 vim.keymap.set('n', "<leader>w", "<CMD>write<CR>")

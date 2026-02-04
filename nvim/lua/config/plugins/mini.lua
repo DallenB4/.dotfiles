@@ -82,18 +82,16 @@ return {
             local MiniAnimate = require("mini.animate")
             MiniAnimate.setup({
                 cursor = {
-                    enable = not vim.g.neovide
-                        and not vim.g.remote,
                     path = MiniAnimate.gen_path.angle()
                 },
-                scroll = {
-                    enable = not vim.g.neovide
-                        and not vim.g.remote
-                },
-                resize = { enable = not vim.g.neovide },
-                open   = { enable = not vim.g.neovide },
-                close  = { enable = not vim.g.neovide }
+                open = { enabled = false },
+                close = { enabled = false }
             })
+            vim.g.minianimate_disable = vim.g.neovide or vim.g.remote
+            vim.keymap.set('n', "<leader>an", function()
+                vim.g.minianimate_disable = not vim.g.minianimate_disable
+                print("minianimate: " .. (vim.g.minianimate_disable and "disabled" or "enabled"))
+            end, { silent = true })
 
             -- mini.notify
             require("mini.notify").setup()

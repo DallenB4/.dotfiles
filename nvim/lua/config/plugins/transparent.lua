@@ -6,7 +6,7 @@ return {
             "MiniPickBorder",
             "MiniPickPrompt",
             "MiniMapNormal",
-            "MiniNotifyNormal"
+            "MiniNotifyNormal",
         }
         if vim.g.neovide then
             require("transparent").setup({
@@ -15,6 +15,12 @@ return {
             })
         else
             require("transparent").setup({
+                groups = {
+                    'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+                    'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+                    'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+                    'SignColumn', 'CursorLineNr', 'StatusLine', 'StatusLineNC', 'EndOfBuffer'
+                },
                 exclude_groups = { "MiniPickMatchCurrent", "MiniPickMatchRanges", "MiniPickMatchMarked", "MiniPickPreviewLine" },
                 extra_groups = extra_groups
             })
