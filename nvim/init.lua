@@ -1,11 +1,18 @@
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.clipboard = "unnamedplus"
-vim.wo.number = true
-vim.wo.relativenumber = true
-vim.opt.scrolloff = 10
-vim.opt.undofile = true
-vim.opt.termguicolors = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.signcolumn = "yes"
+vim.o.wrap = false
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.incsearch = true
+vim.o.scrolloff = 10
+vim.o.undofile = true
+vim.o.termguicolors = true
+vim.o.expandtab = true
+vim.o.winborder = "single"
+vim.o.pumborder = "single"
 -- vim.opt.expandtab = true
 
 -- Neovide
@@ -13,24 +20,12 @@ vim.g.neovide_window_blurred = true
 vim.g.neovide_opacity = 0.8
 
 vim.diagnostic.config {
-	float = true,
+    float = true,
 }
 
 -- Fix for :Inspect command in this version
-vim.hl = vim.highlight
+-- vim.hl = vim.highlight
 
 -- Add border to lsp stuff
-local _border = "single"
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-	vim.lsp.handlers.hover, {
-		border = _border
-	}
-)
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-	vim.lsp.handlers.signature_help, {
-		border = _border
-	}
-)
-
 require("config.lazy")
 require("config.keybinds")

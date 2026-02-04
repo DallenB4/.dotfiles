@@ -26,17 +26,6 @@ require("lazy").setup({
 	spec = {
 		-- import your plugins
 		{ import = "config.plugins" },
-		{
-			"folke/tokyonight.nvim",
-			lazy = false,
-			priority = 1000,
-			opts = {
-				style = "night",
-				on_colors = function(colors)
-					colors.comment = "#939cc2"
-				end
-			}
-		},
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.

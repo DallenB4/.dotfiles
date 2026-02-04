@@ -1,7 +1,7 @@
 return {
 	{
 		"windwp/nvim-ts-autotag",
-		opts = {}
+		config = true
 	},
 	{
 		"brianhuster/live-preview.nvim",
