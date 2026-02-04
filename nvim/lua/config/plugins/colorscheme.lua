@@ -9,14 +9,6 @@ return {
         }
     },
     {
-        "nvim-mini/mini.hues",
-        config = function()
-            vim.keymap.set('n', "<leader><CR>", function()
-                vim.cmd("colorscheme randomhue")
-            end)
-        end
-    },
-    {
         "https://github.com/vague-theme/vague.nvim",
         config = true
     }

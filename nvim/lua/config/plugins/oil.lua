@@ -11,6 +11,4 @@ return {
 			["<C-l>"] = false,
 		},
 	},
-	-- Optional dependencies
-	dependencies = { { "echasnovski/mini.icons", opts = {} } }
 }
