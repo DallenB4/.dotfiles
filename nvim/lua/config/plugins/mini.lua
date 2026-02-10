@@ -54,14 +54,14 @@ return {
             -- mini.move
             require("mini.move").setup({
                 mappings = {
-                    left = "<CS-h>",
-                    right = "<CS-l>",
-                    down = "<CS-j>",
-                    up = "<CS-k>",
-                    line_left = "<CS-h>",
-                    line_right = "<CS-l>",
-                    line_down = "<CS-j>",
-                    line_up = "<CS-k>",
+                    left = "H",
+                    right = "L",
+                    down = "J",
+                    up = "K",
+                    line_left = "H",
+                    line_right = "L",
+                    line_down = "J",
+                    line_up = "K",
                 }
             })
 
@@ -69,7 +69,11 @@ return {
             require("mini.pairs").setup()
 
             -- mini.splitjoin
-            require("mini.splitjoin").setup()
+            require("mini.splitjoin").setup({
+                mappings = {
+                    toggle = "<leader>j"
+                }
+            })
 
             -- mini.extra
             local MiniExtra = require("mini.extra")
@@ -84,8 +88,8 @@ return {
                 cursor = {
                     path = MiniAnimate.gen_path.angle()
                 },
-                open = { enabled = false },
-                close = { enabled = false }
+                open = { enable = false },
+                close = { enable = false }
             })
             vim.g.minianimate_disable = vim.g.neovide or vim.g.remote
             vim.keymap.set('n', "<leader>an", function()
@@ -115,17 +119,20 @@ return {
             end)
 
             -- mini.pick
-            local pick = require("mini.pick")
-            pick.setup({
+            local MiniPick = require("mini.pick")
+            MiniPick.setup({
+                mappings = {
+                    choose_marked = "<C-q>"
+                },
                 options = {
-                    content_from = true
+                    content_from_bottom = true
                 }
             })
-            vim.keymap.set('n', "<leader>fd", function() pick.builtin.files() end)
+            vim.keymap.set('n', "<leader>fd", function() MiniPick.builtin.files() end)
             vim.keymap.set('n', "<leader>en", function()
-                pick.builtin.files({}, { source = { cwd = vim.fn.stdpath("config") }})
+                MiniPick.builtin.files({}, { source = { cwd = vim.fn.stdpath("config") } })
             end)
-            vim.keymap.set('n', "<leader>mg", function() pick.builtin.grep_live() end)
+            vim.keymap.set('n', "<leader>mg", function() MiniPick.builtin.grep_live() end)
 
             -- mini.diff
             local MiniDiff = require("mini.diff")

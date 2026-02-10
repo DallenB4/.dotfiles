@@ -7,6 +7,8 @@ return {
             "MiniPickPrompt",
             "MiniMapNormal",
             "MiniNotifyNormal",
+            "MiniStatuslineFilename",
+            "MiniAnimateNormalFloat"
         }
         if vim.g.neovide then
             require("transparent").setup({
