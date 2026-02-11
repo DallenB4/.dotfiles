@@ -20,13 +20,12 @@ return {
         opts = {},
         config = function()
             vim.diagnostic.config({
-                float = { border = "rounded" },
+                float = { border = "single" },
             })
 
-            -- Set documentation border to be rounded
             local handlers = {
-                ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-                ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+                ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+                ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
             }
 
             -- local capabilities = require("blink.cmp").get_lsp_capabilities()

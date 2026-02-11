@@ -19,7 +19,7 @@ vim.keymap.set({ 'n', 'v', 'x' }, "<leader>p", "\"+p")
 -- LSP bindings
 vim.keymap.set('', "<leader><leader>", function()
     vim.lsp.buf.hover({
-        border = "rounded"
+        border = "single"
     })
 end)
 
