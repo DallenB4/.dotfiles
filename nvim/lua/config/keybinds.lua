@@ -32,6 +32,8 @@ vim.keymap.set('', "<leader>gd", vim.lsp.buf.definition)
 vim.keymap.set('', "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set('', "<leader>ff", vim.lsp.buf.format)
 
+vim.keymap.set('', "<leader>mm", MiniMap.toggle)
+
 -- Disable arrow keys
 vim.keymap.set({ 'n', 'v', 'i' }, "<Left>", "<nop>")
 vim.keymap.set({ 'n', 'v', 'i' }, "<Right>", "<nop>")
